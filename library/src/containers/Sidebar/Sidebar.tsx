@@ -106,7 +106,7 @@ export const Sidebar: React.FunctionComponent<Props> = ({ config }) => {
       <div
         className={`${
           showSidebar ? 'block fixed w-full' : 'hidden'
-        } sidebar relative w-64 max-h-screen h-full bg-gray-200 shadow z-20`}
+        } sidebar relative w-64 max-h-screen h-full shadow z-20`}
         // className={`${
         //   showSidebar ? 'block fixed w-full' : 'hidden'
         // } sidebar bg-gray-200 font-sans font-light px-4 py-8 z-20 shadow overflow-auto`}
@@ -114,7 +114,7 @@ export const Sidebar: React.FunctionComponent<Props> = ({ config }) => {
         <div
           className={`${
             showSidebar ? 'w-full' : ''
-          } block fixed max-h-screen h-full font-sans px-4 pt-8 pb-16 overflow-y-auto bg-gray-200`}
+          } block fixed max-h-screen h-full font-sans px-4 pt-8 pb-16 overflow-y-auto`}
         >
           <div className="sidebar--content">
             <div>
@@ -428,7 +428,7 @@ const OperationsPubItem: React.FunctionComponent<OperationsPubItemProps> = ({
         onClick={() => setShowSidebar(false)}
       >
         <span
-          className="bg-blue-600 font-bold h-6 no-underline text-white uppercase p-1 mr-2 rounded text-xs"
+          className="bg-dojo-teal font-bold h-6 no-underline text-white uppercase p-1 mr-2 rounded text-xs"
           title="Publish"
         >
           Pub
@@ -452,7 +452,7 @@ const OperationsSubItem: React.FunctionComponent<OperationsPubItemProps> = ({
         onClick={() => setShowSidebar(false)}
       >
         <span
-          className="bg-green-600 font-bold h-6 no-underline text-white uppercase p-1 mr-2 rounded text-xs"
+          className="bg-dojo-charcoal font-bold h-6 no-underline text-white uppercase p-1 mr-2 rounded text-xs"
           title="Subscribe"
         >
           SUB

@@ -50,13 +50,13 @@ export const Message: React.FunctionComponent<Props> = ({
   return (
     <div className="panel-item">
       <div className="panel-item--center px-8">
-        <div className="shadow rounded bg-gray-200 p-4 border">
+        <div className="p-4 my-border-top">
           <div>
             {index !== undefined && (
               <span className="text-gray-700 font-bold mr-2">#{index}</span>
             )}
             {title && <span className="text-gray-700 mr-2">{title}</span>}
-            <span className="border text-orange-600 rounded text-xs py-0 px-2">
+            <span className="border text-xs my-code-block">
               {message.uid()}
             </span>
           </div>
@@ -89,7 +89,7 @@ export const Message: React.FunctionComponent<Props> = ({
           )}
 
           {correlationId && (
-            <div className="border bg-gray-100 rounded px-4 py-2 mt-2">
+            <div className="border rounded px-4 py-2 mt-2">
               <div className="text-sm text-gray-700">
                 Correlation ID
                 <span className="border text-orange-600 rounded text-xs ml-2 py-0 px-2">

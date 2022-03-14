@@ -37,7 +37,7 @@ export const Operation: React.FunctionComponent<Props> = props => {
 
   return (
     <div>
-      <div className="panel-item--center px-8">
+      <div className="panel-item--center px-8 my-margin-top-1">
         <OperationInfo {...props} />
 
         {servers && servers.length > 0 ? (
@@ -159,8 +159,8 @@ export const OperationInfo: React.FunctionComponent<Props> = ({
           <span
             className={`font-mono border uppercase p-1 rounded mr-2 ${
               type === PayloadType.PUBLISH
-                ? 'border-blue-600 text-blue-500'
-                : 'border-green-600 text-green-600'
+                ? 'border-dojo-teal text-dojo-teal'
+                : 'border-dojo-charcoal text-dojo-charcoal'
             }`}
             title={type}
           >
@@ -200,7 +200,7 @@ export const OperationInfo: React.FunctionComponent<Props> = ({
       )}
 
       {operationId && (
-        <div className="border bg-gray-100 rounded px-4 py-2 mt-2">
+        <div className="border px-4 py-2 mt-2">
           <div className="text-sm text-gray-700">
             Operation ID
             <span className="border text-orange-600 rounded text-xs ml-2 py-0 px-2">

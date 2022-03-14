@@ -19,7 +19,7 @@ export const Schema: React.FunctionComponent<Props> = ({
   return (
     <div>
       <div className="panel-item--center px-8">
-        <div className="shadow rounded px-4 py-2 border bg-gray-200">
+        <div className="px-4 py-2 my-border-top">
           <SchemaComponent schemaName={schemaName} schema={schema} />
         </div>
       </div>

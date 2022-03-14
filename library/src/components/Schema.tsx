@@ -160,24 +160,24 @@ export const Schema: React.FunctionComponent<Props> = ({
                 )}
                 <div className="inline-block">
                   {schema.format() && (
-                    <span className="bg-yellow-600 font-bold no-underline text-white rounded lowercase mr-2 p-1 text-xs">
+                    <span className="bg-dojo-lime no-underline rounded lowercase mr-2 p-1 text-xs">
                       format: {schema.format()}
                     </span>
                   )}
 
                   {/* related to string */}
                   {schema.pattern() !== undefined && (
-                    <span className="bg-yellow-600 font-bold no-underline text-white rounded mr-2 p-1 text-xs">
+                    <span className="bg-dojo-lime no-underline rounded mr-2 p-1 text-xs">
                       must match: {schema.pattern()}
                     </span>
                   )}
                   {schema.contentMediaType() !== undefined && (
-                    <span className="bg-yellow-600 font-bold no-underline text-white rounded lowercase mr-2 p-1 text-xs">
+                    <span className="bg-dojo-lime no-underline rounded lowercase mr-2 p-1 text-xs">
                       media type: {schema.contentMediaType()}
                     </span>
                   )}
                   {schema.contentEncoding() !== undefined && (
-                    <span className="bg-yellow-600 font-bold no-underline text-white rounded lowercase mr-2 p-1 text-xs">
+                    <span className="bg-dojo-lime no-underline rounded lowercase mr-2 p-1 text-xs">
                       encoding: {schema.contentEncoding()}
                     </span>
                   )}
@@ -186,7 +186,7 @@ export const Schema: React.FunctionComponent<Props> = ({
                   {!!constraints.length &&
                     constraints.map(c => (
                       <span
-                        className="bg-purple-600 font-bold no-underline text-white rounded lowercase mr-2 p-1 text-xs"
+                        className="bg-dojo-plum no-underline rounded lowercase mr-2 p-1 text-xs"
                         key={c}
                       >
                         {c}
@@ -194,7 +194,7 @@ export const Schema: React.FunctionComponent<Props> = ({
                     ))}
 
                   {uid && !uid.startsWith('<anonymous-') && (
-                    <span className="border text-orange-600 rounded mr-2 p-1 text-xs">
+                    <span className="border rounded mr-2 p-1 text-xs my-code-block">
                       uid: {uid}
                     </span>
                   )}
@@ -208,27 +208,27 @@ export const Schema: React.FunctionComponent<Props> = ({
 
                 {schema.default() !== undefined && (
                   <div className="text-xs">
-                    Default value:
-                    <span className="border inline-block text-orange-600 rounded ml-1 py-0 px-2">
+                    <div className="font-bold">Default value:</div>
+                    <span className="border inline-block rounded ml-1 py-0 px-2 my-code-block">
                       {SchemaHelpers.prettifyValue(schema.default())}
                     </span>
                   </div>
                 )}
                 {schema.const() !== undefined && (
                   <div className="text-xs">
-                    Const:
-                    <span className="border inline-block text-orange-600 rounded ml-1 py-0 px-2">
+                    <div className="font-bold">Const:</div>{' '}
+                    <span className="border inline-block rounded ml-1 py-0 px-2 my-code-block">
                       {SchemaHelpers.prettifyValue(schema.const())}
                     </span>
                   </div>
                 )}
                 {schema.enum() && (
                   <ul className="text-xs">
-                    Allowed values:{' '}
+                    <li className="font-bold">Allowed values:</li>{' '}
                     {schema.enum().map((e, idx) => (
                       <li
                         key={idx}
-                        className="border inline-block text-orange-600 rounded ml-1 py-0 px-2"
+                        className="border inline-block rounded ml-1 py-0 px-2 my-code-block"
                       >
                         <span>{SchemaHelpers.prettifyValue(e)}</span>
                       </li>
@@ -255,11 +255,11 @@ export const Schema: React.FunctionComponent<Props> = ({
                 )}
                 {schema.examples() && (
                   <ul className="text-xs">
-                    Examples values:{' '}
+                    <div className="font-bold">Examples values:</div>{' '}
                     {schema.examples().map((e, idx) => (
                       <li
                         key={idx}
-                        className="border inline-block text-orange-600 rounded ml-1 py-0 px-2 break-all"
+                        className="border inline-block rounded ml-1 py-0 px-2 break-all my-code-block"
                       >
                         <span>{SchemaHelpers.prettifyValue(e)}</span>
                       </li>
@@ -272,11 +272,7 @@ export const Schema: React.FunctionComponent<Props> = ({
         </div>
 
         {isCircular || !isExpandable ? null : (
-          <div
-            className={`rounded p-4 py-2 border bg-gray-100 ${
-              reverse ? 'bg-gray-200' : ''
-            } ${expand ? 'block' : 'hidden'}`}
-          >
+          <div className={`p-4 py-2 ${expand ? 'block' : 'hidden'}`}>
             <SchemaProperties schema={schema} />
             <SchemaItems schema={schema} />
 
