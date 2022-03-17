@@ -230,7 +230,7 @@ const ServerSecurityItem: React.FunctionComponent<ServerSecurityItemProps> = ({
               <ul className="inline-block ml-2">
                 {schemas.map((schema, idx) => (
                   <li
-                    className="inline-block font-bold no-underline bg-blue-400 text-white text-xs uppercase rounded px-2 py-0 ml-1"
+                    className="inline-block no-underline bg-dojo-lime text-xs uppercase rounded px-2 py-0 ml-1"
                     key={idx}
                   >
                     {schema}

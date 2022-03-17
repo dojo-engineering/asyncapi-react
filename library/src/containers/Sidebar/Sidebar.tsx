@@ -119,10 +119,16 @@ export const Sidebar: React.FunctionComponent<Props> = ({ config }) => {
           <div className="sidebar--content">
             <div>
               {logo ? (
-                <img
-                  src={logo}
-                  alt={`${info.title()} logo, ${info.version()} version`}
-                />
+                <div>
+                  <img
+                    src={logo}
+                    alt={`${info.title()} logo, ${info.version()} version`}
+                    className="dojo-logo"
+                  />
+                  <h1 className="text-2xl font-light">
+                    {info.title()} {info.version()}
+                  </h1>
+                </div>
               ) : (
                 <h1 className="text-2xl font-light">
                   {info.title()} {info.version()}

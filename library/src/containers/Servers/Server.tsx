@@ -34,12 +34,12 @@ export const Server: React.FunctionComponent<Props> = ({
         <div className="p-4 border">
           <div>
             <span className="font-mono text-base">{server.url()}</span>
-            <span className="bg-teal-500 font-bold no-underline text-white uppercase rounded mx-2 px-2 py-1 text-sm">
+            <span className="bg-dojo-teal no-underline text-white uppercase rounded mx-2 px-2 py-1 text-sm">
               {protocolVersion
                 ? `${server.protocol()} ${protocolVersion}`
                 : server.protocol()}
             </span>
-            <span className="bg-blue-500 font-bold no-underline text-white uppercase rounded px-2 py-1 text-sm">
+            <span className="bg-dojo-charcoal no-underline text-white uppercase rounded px-2 py-1 text-sm">
               {serverName}
             </span>
           </div>
