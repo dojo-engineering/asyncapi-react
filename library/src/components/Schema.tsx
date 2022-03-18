@@ -272,7 +272,9 @@ export const Schema: React.FunctionComponent<Props> = ({
         </div>
 
         {isCircular || !isExpandable ? null : (
-          <div className={`p-4 py-2 ${expand ? 'block' : 'hidden'}`}>
+          <div
+            className={`p-4 py-2 ${expand ? 'block my-border-top' : 'hidden'}`}
+          >
             <SchemaProperties schema={schema} />
             <SchemaItems schema={schema} />
 
