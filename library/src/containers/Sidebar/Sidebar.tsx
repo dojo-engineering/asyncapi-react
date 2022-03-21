@@ -106,10 +106,7 @@ export const Sidebar: React.FunctionComponent<Props> = ({ config }) => {
       <div
         className={`${
           showSidebar ? 'block fixed w-full' : 'hidden'
-        } sidebar relative w-64 max-h-screen h-full shadow z-20`}
-        // className={`${
-        //   showSidebar ? 'block fixed w-full' : 'hidden'
-        // } sidebar bg-gray-200 font-sans font-light px-4 py-8 z-20 shadow overflow-auto`}
+        } sidebar relative w-64 max-h-screen h-full z-20`}
       >
         <div
           className={`${
