@@ -137,10 +137,28 @@ export const Sidebar: React.FunctionComponent<Props> = ({ config }) => {
               <li className="mb-3">
                 <a
                   className="text-gray-700 no-underline hover:text-gray-900"
-                  href="#introduction"
+                  href="#new-features"
                   onClick={() => setShowSidebar(false)}
                 >
-                  Introduction
+                  New Features
+                </a>
+              </li>
+              <li className="mb-3">
+                <a
+                  className="text-gray-700 no-underline hover:text-gray-900"
+                  href="#flow-diagrams"
+                  onClick={() => setShowSidebar(false)}
+                >
+                  Flow Diagrams
+                </a>
+              </li>
+              <li className="mb-3">
+                <a
+                  className="text-gray-700 no-underline hover:text-gray-900"
+                  href="#testing"
+                  onClick={() => setShowSidebar(false)}
+                >
+                  Testing
                 </a>
               </li>
               {asyncapi.hasServers() && (
