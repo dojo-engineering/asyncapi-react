@@ -89,11 +89,23 @@ export const Schema: React.FunctionComponent<Props> = ({
     schemaType = SchemaHelpers.toSchemaType((schema as any).circularSchema());
   }
 
+  //Custom code block added to skip templating "Extensions" outer object
+  if (
+    schemaName == 'Extensions' &&
+    schema.json().properties['x-response'] !== null
+  ) {
+    schemaName = 'x-response';
+    const skipExtensions: SchemaType = SchemaHelpers.jsonToSchema(
+      schema.json().properties['x-response'],
+    );
+    schema = skipExtensions != null ? skipExtensions : schema;
+  }
+
   const styledSchemaName = isProperty ? 'italic' : '';
   const renderedSchemaName =
     typeof schemaName === 'string' ? (
       <span className={`break-words text-sm ${styledSchemaName}`}>
-        {schemaName}
+        {`${schemaName == 'x-response' ? 'Response' : schemaName}`}
       </span>
     ) : (
       schemaName
