@@ -202,19 +202,19 @@ export const OperationsList: React.FunctionComponent = () => {
 
   const operationsList: React.ReactNodeArray = [];
   Object.entries(channels).forEach(([channelName, channel]) => {
-    if (channel.hasPublish()) {
-      operationsList.push(
-        <OperationsPubItem
-          channelName={channelName}
-          key={`pub-${channelName}`}
-        />,
-      );
-    }
     if (channel.hasSubscribe()) {
       operationsList.push(
         <OperationsSubItem
           channelName={channelName}
           key={`sub-${channelName}`}
+        />,
+      );
+    }
+    if (channel.hasPublish()) {
+      operationsList.push(
+        <OperationsPubItem
+          channelName={channelName}
+          key={`pub-${channelName}`}
         />,
       );
     }
