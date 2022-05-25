@@ -17,25 +17,6 @@ export const Operations: React.FunctionComponent = () => {
 
   const operationsList: React.ReactNodeArray = [];
   Object.entries(channels).forEach(([channelName, channel]) => {
-    if (channel.hasPublish()) {
-      operationsList.push(
-        <li
-          className="mb-12"
-          key={`pub-${channelName}`}
-          id={CommonHelpers.getIdentifier(
-            `operation-${PayloadType.PUBLISH}-${channelName}`,
-            config,
-          )}
-        >
-          <Operation
-            type={PayloadType.PUBLISH}
-            operation={channel.publish()}
-            channelName={channelName}
-            channel={channel}
-          />
-        </li>,
-      );
-    }
     if (channel.hasSubscribe()) {
       operationsList.push(
         <li
@@ -49,6 +30,25 @@ export const Operations: React.FunctionComponent = () => {
           <Operation
             type={PayloadType.SUBSCRIBE}
             operation={channel.subscribe()}
+            channelName={channelName}
+            channel={channel}
+          />
+        </li>,
+      );
+    }
+    if (channel.hasPublish()) {
+      operationsList.push(
+        <li
+          className="mb-12"
+          key={`pub-${channelName}`}
+          id={CommonHelpers.getIdentifier(
+            `operation-${PayloadType.PUBLISH}-${channelName}`,
+            config,
+          )}
+        >
+          <Operation
+            type={PayloadType.PUBLISH}
+            operation={channel.publish()}
             channelName={channelName}
             channel={channel}
           />
