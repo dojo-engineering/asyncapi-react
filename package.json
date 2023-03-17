@@ -22,6 +22,8 @@
     "build:playground": "cd playground && npm run build",
     "lint": "tslint -c ./tslint.json --project tsconfig.base.json --format verbose && prettier --check \"**/*.{ts,tsx,js,jsx,json,html,css,yaml}\"",
     "lint:fix": "tslint -c ./tslint.json --project tsconfig.base.json --format verbose --fix && prettier --write '**/*.{ts,tsx,js,jsx,json,html,css,yaml}'",
+    "generate-tables-template": "npm install && npm run build-prod",
+    "build-prod": "cd library && npm run build:prod",
     "conflict-check": "tslint-config-prettier-check ./tslint.json",
     "markdownlint": "markdownlint **/*.md",
     "release": "semantic-release",
