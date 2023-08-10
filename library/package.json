@@ -44,7 +44,7 @@
     "./styles/default.min.css"
   ],
   "scripts": {
-    "prestart": "npm-link-shared ../../html-template/node_modules . react",
+    "link-shared-deps": "npm-link-shared ../../html-template/node_modules . react",
     "start": "tsc -p tsconfig.esm.json --watch",
     "build:dev": "npm run build:esm && npm run build:types && npm run build:styles",
     "build:prod": "export NODE_OPTIONS=--openssl-legacy-provider; npm run build:esm && npm run build:cjs && npm run build:umd && npm run build:standalone && npm run build:types && npm run build:styles",
