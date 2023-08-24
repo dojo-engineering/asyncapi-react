@@ -17,44 +17,50 @@ export const Operations: React.FunctionComponent = () => {
 
   const operationsList: React.ReactNodeArray = [];
   Object.entries(channels).forEach(([channelName, channel]) => {
-    if (channel.hasSubscribe()) {
-      operationsList.push(
-        <li
-          className="mb-12"
-          key={`sub-${channelName}`}
-          id={CommonHelpers.getIdentifier(
-            `operation-${PayloadType.SUBSCRIBE}-${channelName}`,
-            config,
-          )}
-        >
-          <Operation
-            type={PayloadType.SUBSCRIBE}
-            operation={channel.subscribe()}
-            channelName={channelName}
-            channel={channel}
-          />
-        </li>,
-      );
-    }
-    if (channel.hasPublish()) {
-      operationsList.push(
-        <li
-          className="mb-12"
-          key={`pub-${channelName}`}
-          id={CommonHelpers.getIdentifier(
-            `operation-${PayloadType.PUBLISH}-${channelName}`,
-            config,
-          )}
-        >
-          <Operation
-            type={PayloadType.PUBLISH}
-            operation={channel.publish()}
-            channelName={channelName}
-            channel={channel}
-          />
-        </li>,
-      );
-    }
+    Object.keys(channel.json()).forEach(channelOperation => {
+      switch (channelOperation) {
+        case 'subscribe':
+          operationsList.push(
+            <li
+              className="mb-12"
+              key={`sub-${channelName}`}
+              id={CommonHelpers.getIdentifier(
+                `operation-${PayloadType.SUBSCRIBE}-${channelName}`,
+                config,
+              )}
+            >
+              <Operation
+                type={PayloadType.SUBSCRIBE}
+                operation={channel.subscribe()}
+                channelName={channelName}
+                channel={channel}
+              />
+            </li>,
+          );
+          break;
+        case 'publish':
+          operationsList.push(
+            <li
+              className="mb-12"
+              key={`pub-${channelName}`}
+              id={CommonHelpers.getIdentifier(
+                `operation-${PayloadType.PUBLISH}-${channelName}`,
+                config,
+              )}
+            >
+              <Operation
+                type={PayloadType.PUBLISH}
+                operation={channel.publish()}
+                channelName={channelName}
+                channel={channel}
+              />
+            </li>,
+          );
+          break;
+        default:
+          break;
+      }
+    });
   });
 
   return (

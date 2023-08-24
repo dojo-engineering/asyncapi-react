@@ -174,23 +174,31 @@ export const OperationsList: React.FunctionComponent = () => {
   const channels = asyncapi.channels();
 
   const operationsList: React.ReactNodeArray = [];
+
   Object.entries(channels).forEach(([channelName, channel]) => {
-    if (channel.hasSubscribe()) {
-      operationsList.push(
-        <OperationsSubItem
-          channelName={channelName}
-          key={`sub-${channelName}`}
-        />,
-      );
-    }
-    if (channel.hasPublish()) {
-      operationsList.push(
-        <OperationsPubItem
-          channelName={channelName}
-          key={`pub-${channelName}`}
-        />,
-      );
-    }
+    Object.keys(channel.json()).forEach(channelOperation => {
+      switch (channelOperation) {
+        case 'subscribe':
+          operationsList.push(
+            <OperationsSubItem
+              channelName={channelName}
+              key={`sub-${channelName}`}
+            />,
+          );
+          break;
+        case 'publish':
+          operationsList.push(
+            <OperationsPubItem
+              channelName={channelName}
+              key={`pub-${channelName}`}
+            />,
+          );
+          break;
+        case '':
+        default:
+          break;
+      }
+    });
   });
 
   return <ul className="text-sm mt-2">{operationsList}</ul>;
@@ -203,59 +211,75 @@ export const OperationsByRootTags: React.FunctionComponent = () => {
 
   const taggedOperations = (tag: Tag) => {
     const operationsList: React.ReactNodeArray = [];
+
     Object.entries(channels).forEach(([channelName, channel]) => {
-      if (
-        channel.hasPublish() &&
-        SpecificationHelpers.containTags(channel.publish(), tag)
-      ) {
-        operationsList.push(
-          <OperationsPubItem
-            channelName={channelName}
-            key={`pub-${channelName}`}
-          />,
-        );
-      }
-      if (
-        channel.hasSubscribe() &&
-        SpecificationHelpers.containTags(channel.subscribe(), tag)
-      ) {
-        operationsList.push(
-          <OperationsSubItem
-            channelName={channelName}
-            key={`sub-${channelName}`}
-          />,
-        );
-      }
+      Object.keys(channel.json()).forEach(channelOperation => {
+        switch (channelOperation) {
+          case 'subscribe':
+            if (SpecificationHelpers.containTags(channel.subscribe(), tag)) {
+              operationsList.push(
+                <OperationsSubItem
+                  channelName={channelName}
+                  key={`sub-${channelName}`}
+                />,
+              );
+            }
+            break;
+          case 'publish':
+            if (SpecificationHelpers.containTags(channel.publish(), tag)) {
+              operationsList.push(
+                <OperationsPubItem
+                  channelName={channelName}
+                  key={`pub-${channelName}`}
+                />,
+              );
+            }
+            break;
+          case '':
+          default:
+            break;
+        }
+      });
     });
     return operationsList;
   };
 
   const untaggedOperations: React.ReactNodeArray = [];
+
   Object.entries(channels).forEach(([channelName, channel]) => {
-    if (
-      channel.hasPublish() &&
-      (!channel.publish().hasTags() ||
-        !SpecificationHelpers.containTags(channel.publish(), tags))
-    ) {
-      untaggedOperations.push(
-        <OperationsPubItem
-          channelName={channelName}
-          key={`pub-${channelName}`}
-        />,
-      );
-    }
-    if (
-      channel.hasSubscribe() &&
-      (!channel.subscribe().hasTags() ||
-        !SpecificationHelpers.containTags(channel.subscribe(), tags))
-    ) {
-      untaggedOperations.push(
-        <OperationsSubItem
-          channelName={channelName}
-          key={`sub-${channelName}`}
-        />,
-      );
-    }
+    Object.keys(channel.json()).forEach(channelOperation => {
+      switch (channelOperation) {
+        case 'subscribe':
+          if (
+            !channel.subscribe().hasTags() ||
+            !SpecificationHelpers.containTags(channel.subscribe(), tags)
+          ) {
+            untaggedOperations.push(
+              <OperationsSubItem
+                channelName={channelName}
+                key={`sub-${channelName}`}
+              />,
+            );
+          }
+          break;
+        case 'publish':
+          if (
+            !channel.publish().hasTags() ||
+            !SpecificationHelpers.containTags(channel.publish(), tags)
+          ) {
+            untaggedOperations.push(
+              <OperationsPubItem
+                channelName={channelName}
+                key={`pub-${channelName}`}
+              />,
+            );
+          }
+          break;
+        case '':
+        default:
+          break;
+      }
+    });
   });
 
   return (
