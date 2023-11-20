@@ -30,7 +30,7 @@ export const Schema: React.FunctionComponent<Props> = ({
   onlyTitle = false,
 }) => {
   const { reverse } = useContext(SchemaContext);
-  const [expand, setExpand] = useState(expanded);
+  const [expand, setExpand] = useState(true);
 
   if (
     !schema ||
