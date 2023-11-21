@@ -26,7 +26,7 @@ export const Schema: React.FunctionComponent<Props> = ({
   isProperty = false,
   isCircular = false,
   dependentRequired,
-  expanded = true,
+  expanded = false,
   onlyTitle = false,
 }) => {
   const { reverse } = useContext(SchemaContext);
