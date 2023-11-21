@@ -49,7 +49,7 @@ export const Example: React.FunctionComponent<ExampleProps> = ({
   schema,
   examples = [],
 }) => {
-  const [expand, setExpand] = useState(true);
+  const [expand, setExpand] = useState(false);
 
   return (
     <div className="mt-4">

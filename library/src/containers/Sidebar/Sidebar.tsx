@@ -408,7 +408,7 @@ const OperationsByTagItem: React.FunctionComponent<OperationsByTagItemProps> = (
   tagName,
   children,
 }) => {
-  const [expand, setExpand] = useState(true);
+  const [expand, setExpand] = useState(false);
 
   return (
     <div>
