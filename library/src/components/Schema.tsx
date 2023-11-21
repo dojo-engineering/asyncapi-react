@@ -26,11 +26,11 @@ export const Schema: React.FunctionComponent<Props> = ({
   isProperty = false,
   isCircular = false,
   dependentRequired,
-  expanded = false,
+  expanded = true,
   onlyTitle = false,
 }) => {
   const { reverse } = useContext(SchemaContext);
-  const [expand, setExpand] = useState(expanded);
+  const [expand, setExpand] = useState(true);
 
   if (
     !schema ||
