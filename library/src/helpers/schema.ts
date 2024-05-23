@@ -204,10 +204,10 @@ export class SchemaHelpers {
     const json = {
       type: 'object',
       properties: Object.entries(urlVariables).reduce((obj, [urlName, url]) => {
-        obj[urlName] = Object.assign({}, url.json());
-        obj[urlName].type = 'string';
+        // @ts-ignore ignore indexing
+        obj[urlName] = Object.assign({},  url.json(), {type: 'string'});
         return obj;
-      }, {}),
+      }, { }),
       required: Object.keys(urlVariables),
       [this.extRenderType]: false,
       [this.extRenderAdditionalInfo]: false,
@@ -226,10 +226,12 @@ export class SchemaHelpers {
       type: 'object',
       properties: Object.entries(parameters).reduce(
         (obj, [paramaterName, parameter]) => {
-          obj[paramaterName] = Object.assign({}, parameter.schema().json());
-          obj[paramaterName].description =
-            parameter.description() || obj[paramaterName].description;
-          obj[paramaterName][this.extParameterLocation] = parameter.location();
+          // @ts-ignore ignore indexing
+          obj[paramaterName] = Object.assign({}, parameter.schema().json(), {
+            // @ts-ignore ignore indexing
+            description:   parameter.description() || obj[paramaterName].description,
+            [this.extParameterLocation]: parameter.location(),
+          });
           return obj;
         },
         {},
@@ -262,6 +264,7 @@ export class SchemaHelpers {
           !extName.startsWith('x-parser-') &&
           !extName.startsWith('x-schema-private-')
         ) {
+          // @ts-ignore ignore indexing
           obj[extName] = ext;
         }
         return obj;
@@ -319,6 +322,7 @@ export class SchemaHelpers {
       type: 'object',
       properties: Object.entries(records).reduce(
         (obj, [propertyName, propertySchema]) => {
+          // @ts-ignore ignore indexing
           obj[propertyName] = Object.assign({}, propertySchema.json());
           return obj;
         },
@@ -508,6 +512,7 @@ export class SchemaHelpers {
     return {
       type: 'object',
       properties: Object.entries(value).reduce((obj, [k, v]) => {
+        // @ts-ignore ignore indexing
         obj[k] = this.jsonFieldToSchema(v);
         return obj;
       }, {}),
