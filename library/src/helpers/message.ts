@@ -20,6 +20,7 @@ export class MessageHelpers {
           !propertyName.startsWith('x-parser-') &&
           !propertyName.startsWith('x-schema-private-')
         ) {
+          // @ts-ignore ignore indexing
           obj[propertyName] = this.sanitizeExample(property);
         }
         return obj;
