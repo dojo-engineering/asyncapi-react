@@ -53,6 +53,7 @@ class AsyncApiComponent extends Component<AsyncApiProps, AsyncAPIState> {
     const { asyncapi, error } = this.state;
 
     return (
+      // @ts-ignore ignore error for now
       <AsyncApiStandalone
         schema={asyncapi || schema}
         config={config}
